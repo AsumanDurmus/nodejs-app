@@ -15,8 +15,15 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}     
       - name: Build Docker Image
         run: docker build -t asumancw/nodejs-app  .
+      - name: message
+        run: echo "docker check..................."
+      - name: directory list
+        run: docker images
+      - name: docker push control
+        run: docker pull asumancw/blue 
       - name: Publish Image to docker hub
         run: docker push asumancw/nodejs-app:latest 
+      
  
   deploy:
     needs: build
